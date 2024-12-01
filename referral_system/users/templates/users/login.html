@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+
+{% block title %}
+    Авторизация
+{% endblock %}
+
+{% block body %}
+    <h1>Авторизация</h1>
+    <form method="POST" action="{% url 'users:phone_auth' %}">
+        {% csrf_token %}
+        <label for="phone_number">Телефон:</label>
+        <input type="text" name="phone_number" required>
+        <button type="submit">Отправить код</button>
+    </form>
+{% endblock %}

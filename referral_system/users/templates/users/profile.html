@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+
+{% block title %}
+    Профиль пользователя
+{% endblock %}
+
+{% block body %}
+<h1>Профиль пользователя</h1>
+<p>Телефон: {{ user.phone_number }}</p>
+
+<h2>Активированные коды:</h2>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="invite_code" placeholder="Введите инвайт-код" required>
+    <button type="submit">Активировать код</button>
+</form>
+
+<h2>Пользователи, которые активировали свой код:</h2>
+<ul>
+    {% for referral in referrals %}
+        <li>{{ referral.referred_user }}</li>
+    {% empty %}
+        <li>Нет активированных пользователей.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+
+{% block title %}
+    Подтверждение кода
+{% endblock %}
+
+{% block body %}
+    <h1>Подтверждение кода</h1>
+    <form action="{% url 'users:code_verification' phone_number=phone_number %}" method="post">
+        {% csrf_token %}
+        <label for="code">Введите код, отправленный на ваш номер телефона: {{ phone_number }}</label>
+        <a href="{% url 'users:phone_auth' %}">Изменить номер телефона</a>
+        <input type="text" id="code" name="code" required>
+        <input type="hidden" name="phone_number" value="{{ phone_number }}">
+        <button type="submit">Подтвердить код</button>
+    </form>
+{% endblock %}
