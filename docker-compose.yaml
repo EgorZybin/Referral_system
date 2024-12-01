@@ -1,13 +1,11 @@
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     ports:
-      - "8000:8080"
-
+      - "8000:8000"
   db:
-    image: postgres:latest
+    image: postgres
     restart: always
     environment:
       POSTGRES_USER: postgres
@@ -15,4 +13,5 @@ services:
       POSTGRES_DB: referral_db
     ports:
       - "5432:5432"
-    
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
