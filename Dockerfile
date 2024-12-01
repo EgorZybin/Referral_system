@@ -11,4 +11,4 @@ RUN pip install -r requirements.txt
 
 COPY referral_system .
 
-CMD ["gunicorn", "referral_system.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "referral_system.wsgi:application", "--bind", "213.171.9.168:8000"]
