@@ -1,9 +1,13 @@
+version: '3.8'
+
 services:
   app:
     build:
-      dockerfile: ./Dockerfile
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8000:8080"
+    
   db:
     image: postgres
     restart: always
